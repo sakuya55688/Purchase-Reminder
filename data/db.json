@@ -1,22 +1,16 @@
 {
-    "blogs": [
-        {
-            "title": "About miComet",
-            "body": "The official teitei is true teitei",
-            "author":"ahoge",
-            "id": 1
-        },
-        {
-            "title": "NoelFlare Saikou",
-            "body": "The true love between the two is so lovely.",
-            "author":"sakuya",
-            "id": 2
-        },
-        {
-            "title": "okakoro kawaii",
-            "body": "How the classic couple bring peace and joy to the audience",
-            "author":"jerry",
-            "id": 3
-        }
-    ]
+  "blogs": [
+    {
+      "title": "okakoro kawaii",
+      "content": "How the classic couple bring peace and joy to the audience",
+      "author": "jerry",
+      "id": 3
+    },
+    {
+      "title": "Teitei",
+      "content": "noalflare micomet ",
+      "author": "Watson",
+      "id": 4
+    }
+  ]
 }
