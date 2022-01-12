@@ -15,7 +15,7 @@ const Create = () => {
         
         const blog = {title, content, author};  //一個資料object
 
-        fetch("http://localhost:8000/blogs", {
+        fetch("http://localhost:8000/products", {
             method: "POST",
             headers: {"Content-type": "application/json"},
             body: JSON.stringify(blog)

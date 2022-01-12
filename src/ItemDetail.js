@@ -2,15 +2,15 @@ import { useParams } from "react-router-dom";
 import useFetch from "./fetchData";
 import { useHistory } from "react-router-dom";
 
-const BlogDetail = () => {
+const ItemDetail = () => {
 
     const { id } = useParams(); //讀取網址列的值
-    const { data: blog, error, isPending } = useFetch("http://localhost:8000/blogs/" + id);
+    const { data: product, error, isPending } = useFetch("http://localhost:8000/products/" + id);
     const history = useHistory();
 
     const clickHandler = () => {
 
-        fetch("http://localhost:8000/blogs/" + blog.id, {
+        fetch("http://localhost:8000/products/" + product.id, {
             method: "DELETE"
         }).then(()=>{
             history.push("/");
@@ -19,14 +19,14 @@ const BlogDetail = () => {
     }
 
     return (  
-        <div className="blog-detail">
+        <div className="product-detail">
             { isPending && <div>Loading...</div> }
             { error && <div>{ error }</div>}
-            { blog && (
+            { product && (
                 <article>
-                    <h1>{ blog.title }</h1>
-                    <p> Written by { blog.author }</p>
-                    <div>{ blog.content }</div>
+                    <h1>{ product.title }</h1>
+                    <p> products of { product.name }</p>
+                    <div>{ product.content }</div>
                     <button onClick={clickHandler}>Delete</button>
                 </article>
                 )
@@ -35,4 +35,4 @@ const BlogDetail = () => {
     );
 }
  
-export default BlogDetail;
+export default ItemDetail;

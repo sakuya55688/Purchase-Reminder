@@ -1,26 +1,17 @@
 
-import BlogList from "./BlogListTemplate"; //載入通用模板
 import useFetch from "./fetchData";
+import YearBlock from "./YearBlock";
 
 const Home = () => {
     //接收資料並重新命名(data:你想要的名字)
-    const { data:blogs, isPending, errorMessage } = useFetch('http://localhost:8000/blogs');
+    const { data:products, isPending, errorMessage } = useFetch('http://localhost:8000/products');
 
-    //一個給子元件call的function 用於刪除blog
-    //使用filter篩出某特定id後用setBlog更新資料 
-    //而原先blogs資料並未被取代
-    /*
-    const deleteHandler = (id) => {
-        const newBlogs = blogs.filter( (blog) => (blog.id !== id) );
-        setBlogs(newBlogs);
-    }
-    */
     
 
     return (
         <div className="home">
 
-            { errorMessage && <div>{errorMessage}</div>}
+            {errorMessage && <div>{errorMessage}</div>}
             {
             //因為blogs data需要時間讀取 一開始的資料是null
             //所以需要把html節點包在程式邏輯中來判斷是否已經有資料了
@@ -30,7 +21,9 @@ const Home = () => {
             //父元件到子元件傳遞資料props 
             //props的寫法 資料名={欲傳入資料(可以是變數或是function)}
             }
-            {blogs && <BlogList blogs={blogs} title="All Blogs" /> }
+
+            <h2 className="content-title">Perchased List</h2>
+            {products && <YearBlock products={products}/>}
             
         </div>
 

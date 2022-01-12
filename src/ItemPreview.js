@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
 
 
-const BlogList = ({blogs, title, deleteHandler}) => {
+const ItemPreview = ({products,filterYear,filterMonth}) => {
 
     return ( 
         <div className="blog-list">
-            <h2>{ title }</h2>
             {
-            blogs.map((blog) => (
-                <div className="blog-preview" key={blog.id}>
-                    <Link to={`blogs/${blog.id}`}>
-                        <h2>{blog.title}</h2>
-                        <p>Written by {blog.author}</p>
+            products.filter((product) => 
+                (product.arrivalDate.year+product.arrivalDate.month) === filterYear+filterMonth
+            ).map(
+        
+                (product) => (
+                <div className="product-preview" key={filterYear+filterMonth+product.id}>
+                    <Link to={`products/${product.id}`}>
+                        <h3>{product.name}&nbsp;{product.title}</h3>   
+                        <p>$&nbsp;{product.price + product.deliveryFee}</p>
                     </Link>
                     {
                         //接收刪除function的示範按鈕
@@ -24,7 +27,7 @@ const BlogList = ({blogs, title, deleteHandler}) => {
     );
 }
  
-export default BlogList;
+export default ItemPreview;
 
 /* props寫法1 只傳一個props參數
     const BlogList = (props) => {
